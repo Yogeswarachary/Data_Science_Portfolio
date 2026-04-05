@@ -1,0 +1,170 @@
+/* Global Styles */
+:root {
+    --primary: #00d2ff;
+    --secondary: #3a7bd5;
+    --accent: #ff9f43;
+    --bg-dark: #0f172a;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+}
+
+/* Background */
+body {
+    background-color: var(--bg-dark) !important;
+}
+
+/* Glassmorphism Effect */
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border-color: var(--primary);
+}
+
+/* Typography Enhancements */
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-weight: 700 !important;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+/* Skill Badges */
+.skill-badge {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    background: rgba(0, 210, 255, 0.1);
+    color: var(--primary);
+    border: 1.5px solid var(--primary);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin: 0.4rem 0.3rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.skill-badge:hover {
+    background: rgba(0, 210, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+}
+
+/* Project Cards Grid */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+/* Custom Buttons */
+.cta-button {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    color: white !important;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    border: none;
+}
+
+/* Sidebar Customization */
+[data-testid="stSidebar"] {
+    background-color: #020617;
+}
+
+[data-testid="stSidebar"] section {
+    padding-top: 2rem;
+}
+
+/* Main Content Area */
+[data-testid="stMainBlockContainer"] {
+    background: #0f172a;
+}
+
+/* Buttons Styling */
+.stButton > button {
+    border-radius: 8px;
+    border: 1px solid #00d2ff;
+    color: #00d2ff;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.stButton > button:hover {
+    background-color: rgba(0, 210, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+}
+
+/* Link Buttons */
+a[data-testid="stLinkButton"] {
+    text-decoration: none !important;
+}
+
+/* Form Elements */
+input, textarea, select {
+    background-color: rgba(15, 23, 42, 0.5) !important;
+    border: 1px solid rgba(0, 210, 255, 0.2) !important;
+    color: #f8fafc !important;
+    border-radius: 8px !important;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #00d2ff !important;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3) !important;
+}
+
+/* Divider */
+hr {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+    .gradient-text {
+        font-size: 2rem;
+    }
+    
+    .glass-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 210, 255, 0.5);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 210, 255, 0.8);
+}
