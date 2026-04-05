@@ -7,7 +7,7 @@ def show():
     </h1>
     """, unsafe_allow_html=True)
     st.markdown("""
-    <p style="font-size: 1rem; color: #94a3b8; margin-bottom: 2rem;">
+    <p style="font-size: 1rem; color: #00d2ff; margin-bottom: 2rem;">
     5 production-ready projects featuring fraud detection, supply chain analytics, hypothesis testing, ML trading, and AI automation.
     Includes an independent research publication in financial fraud. Each project is deployed with live demos.
     </p>
