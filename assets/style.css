@@ -10,19 +10,28 @@
 }
 
 /* Background */
-html, body, #root, [data-testid="stAppViewContainer"], [data-testid="stMainBlockContainer"], .block-container {
+html,
+body,
+#root,
+[data-testid="stAppViewContainer"],
+[data-testid="stMainBlockContainer"],
+.block-container {
     background-color: var(--bg-dark) !important;
     color: var(--text-main) !important;
 }
 
-#MainMenu, [data-testid="stHeader"], footer, [data-testid="stToolbar"] {
+#MainMenu,
+[data-testid="stHeader"],
+footer,
+[data-testid="stToolbar"] {
     visibility: hidden !important;
     height: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
 }
 
-a, a:visited {
+a,
+a:visited {
     color: #00d2ff !important;
 }
 
@@ -132,7 +141,7 @@ h4 {
 }
 
 /* Buttons Styling */
-.stButton > button {
+.stButton>button {
     border-radius: 8px;
     border: 1px solid #00d2ff;
     background-color: #00d2ff !important;
@@ -142,8 +151,8 @@ h4 {
     padding: 0.85rem 1.2rem;
 }
 
-.stButton > button:hover,
-.stButton > button:focus {
+.stButton>button:hover,
+.stButton>button:focus {
     background-color: #3a7bd5 !important;
     color: #0f172a !important;
     box-shadow: 0 6px 18px rgba(0, 210, 255, 0.35);
@@ -155,14 +164,18 @@ a[data-testid="stLinkButton"] {
 }
 
 /* Form Elements */
-input, textarea, select {
+input,
+textarea,
+select {
     background-color: rgba(15, 23, 42, 0.5) !important;
     border: 1px solid rgba(0, 210, 255, 0.2) !important;
     color: #f8fafc !important;
     border-radius: 8px !important;
 }
 
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
     border-color: #00d2ff !important;
     box-shadow: 0 0 10px rgba(0, 210, 255, 0.3) !important;
 }
@@ -177,7 +190,7 @@ hr {
     .gradient-text {
         font-size: 2rem;
     }
-    
+
     .glass-card {
         padding: 1.5rem;
     }
