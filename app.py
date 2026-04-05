@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 from pathlib import Path
+from datetime import datetime
 import homepage
 import projects
 import about
@@ -8,6 +9,23 @@ import resume
 import contact
 
 ROOT_DIR = Path(__file__).resolve().parent
+
+
+def get_deployment_version():
+    git_head = ROOT_DIR / ".git" / "HEAD"
+    if git_head.exists():
+        head_text = git_head.read_text(encoding="utf-8").strip()
+        if head_text.startswith("ref:"):
+            ref_path = ROOT_DIR / ".git" / head_text.split(":", 1)[1].strip()
+            if ref_path.exists():
+                return ref_path.read_text(encoding="utf-8").strip()
+        return head_text
+
+    app_file = ROOT_DIR / "app.py"
+    if app_file.exists():
+        return datetime.utcfromtimestamp(app_file.stat().st_mtime).strftime("%Y-%m-%d %H:%M UTC")
+
+    return "unknown"
 
 # Page Config
 st.set_page_config(
@@ -59,13 +77,17 @@ with st.sidebar:
     )
     
     st.divider()
-    st.markdown("""
+    version_text = get_deployment_version()[:8]
+    st.markdown(f"""
     <div style="text-align: center; color: #94a3b8; font-size: 0.85rem;">
         <p><b>Quick Links</b></p>
         <p>
             <a href="https://github.com/Yogeswarachary" target="_blank" style="color: #00d2ff; text-decoration: none;">💻 GitHub</a><br>
             <a href="https://www.linkedin.com/in/yogeswarachary-modepalli-4a91571b8/" target="_blank" style="color: #00d2ff; text-decoration: none;">🔗 LinkedIn</a><br>
             <a href="https://yogeswarachary.github.io/Financial-Fraud-India-2024-Research/Financial_Fraud_India_FY_2024_2025.pdf" target="_blank" style="color: #00d2ff; text-decoration: none;">📄 Research Paper</a>
+        </p>
+        <p style="margin-top: 0.75rem; color: #64748b; font-size: 0.8rem;">
+            Deployed version: <b>{version_text}</b>
         </p>
     </div>
     """, unsafe_allow_html=True)
