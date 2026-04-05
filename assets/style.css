@@ -15,7 +15,7 @@ html, body, #root, [data-testid="stAppViewContainer"], [data-testid="stMainBlock
     color: var(--text-main) !important;
 }
 
-#MainMenu, header, footer, [data-testid="stToolbar"] {
+#MainMenu, [data-testid="stHeader"], footer, [data-testid="stToolbar"] {
     visibility: hidden !important;
     height: 0 !important;
     margin: 0 !important;
