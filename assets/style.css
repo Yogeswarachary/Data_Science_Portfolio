@@ -10,6 +10,22 @@
 }
 
 /* Background */
+html, body, #root, [data-testid="stAppViewContainer"], [data-testid="stMainBlockContainer"], .block-container {
+    background-color: var(--bg-dark) !important;
+    color: var(--text-main) !important;
+}
+
+#MainMenu, header, footer, [data-testid="stToolbar"] {
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+a, a:visited {
+    color: #00d2ff !important;
+}
+
 body {
     background-color: var(--bg-dark) !important;
 }
@@ -22,6 +38,14 @@ body {
     border-radius: 16px;
     padding: 2rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card p,
+.glass-card li,
+.glass-card a,
+.glass-card span,
+.glass-card div {
+    color: #e2e8f0 !important;
 }
 
 .glass-card:hover {
@@ -107,14 +131,18 @@ h4 {
 .stButton > button {
     border-radius: 8px;
     border: 1px solid #00d2ff;
-    color: #00d2ff;
-    font-weight: 600;
+    background-color: #00d2ff !important;
+    color: #0f172a !important;
+    font-weight: 700;
     transition: all 0.3s ease;
+    padding: 0.85rem 1.2rem;
 }
 
-.stButton > button:hover {
-    background-color: rgba(0, 210, 255, 0.1);
-    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+.stButton > button:hover,
+.stButton > button:focus {
+    background-color: #3a7bd5 !important;
+    color: #0f172a !important;
+    box-shadow: 0 6px 18px rgba(0, 210, 255, 0.35);
 }
 
 /* Link Buttons */

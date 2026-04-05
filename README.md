@@ -6,14 +6,14 @@ This is my Streamlit portfolio to showcase **Data Science, Machine Learning, and
 
 - **Modern Design**: I've crafted a glassmorphic UI with gradient accents and smooth animations
 - **Multi-Page Navigation**: Home, Projects, Experience, Education, About, Skills, Contact
-- **6 Live Projects**: All deployed by me to Streamlit Cloud with GitHub links
-- **Career Narrative**: My journey showcasing my transition from compliance to data science
-- **Responsive Layout**: Mobile-friendly and professionally designed.
-- I've made sure to highlight business impact and technical skills clearly
+- **5 Live Projects + Research**: Deployed by me to Streamlit Cloud with GitHub links
+- **Career Narrative**: My transition from compliance to data science with measurable business impact
+- **Responsive Layout**: Mobile-friendly and professionally designed
+- Clear recruiter-friendly storytelling with impact-focused metrics
 
 ## 🚀 Project Highlights
 
-Here are the 6 projects I've worked on that really showcase my expertise:
+Here are the 5 live projects and one research publication that showcase my experience and impact:
 
 | Project | Technology | Impact |
 |---------|-----------|--------|
@@ -67,14 +67,12 @@ Here's the structure I created to keep everything organized:
 Portfolio/
 ├── app.py                          # Main application with navigation
 ├── homepage.py                     # Hero section & key achievements
-├── projects.py                     # All 6 projects with links
-├── experience.py                   # Professional experience timeline
-├── education.py                    # Education & certifications
-├── about.py                        # About me & career narrative
-├── resume.py                       # Technical skills & expertise
-├── contact.py                      # Contact information & form
+├── projects.py                     # Project portfolio with live links
+├── about.py                        # About me, career story, and values
+├── resume.py                       # Technical skills and resume download
+├── contact.py                      # Contact information and email links
 ├── assets/
-│   └── style.css                  # Custom styling & theme
+│   └── style.css                  # Custom styling and theme
 └── requirements.txt               # Python dependencies
 ```
 
@@ -133,7 +131,7 @@ Feel free to reach out through any of these channels:
 
 I'm sharing this portfolio as open source. Feel free to fork it, modify it, and use it as a template for your own portfolio. I believe in contributing to the community!
 
-I'd love to hear from you! If anyone wanted to update/use/fork this Repository for there Portfolio Application Purpose
+I'd love to hear from you! If anyone wants to update, use, or fork this repository for their portfolio application, feel free.
 
 **Built with ❤️ by Yogeswarachary Modepalli**
 

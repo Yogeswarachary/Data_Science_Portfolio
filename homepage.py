@@ -1,4 +1,7 @@
 import streamlit as st
+from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parent
 
 def show():
     # Hero Section

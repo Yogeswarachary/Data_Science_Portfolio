@@ -1,4 +1,7 @@
 import streamlit as st
+from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parent
 
 def show():
     st.markdown("""
@@ -20,7 +23,8 @@ def show():
     # Download Button
     col_download = st.columns([1, 2, 1])
     with col_download[1]:
-        with open("ymodepalli-RESUME.pdf", "rb") as pdf_file:
+        resume_path = ROOT_DIR / "ymodepalli-RESUME.pdf"
+        with open(resume_path, "rb") as pdf_file:
             pdf_bytes = pdf_file.read()
             st.download_button(
                 label="📥 Download Resume PDF",
@@ -45,8 +49,8 @@ def show():
                 models that solve real-world financial and operational challenges.
             </p>
             <p style="color: #94a3b8;">
-                <b>Career Path:</b> 3 years visa consultancy → Self-taught data science → 
-                5 deployed ML projects → 1 Research publications
+                <b>Career Path:</b> 3 years visa consultancy → Self-taught data science →
+                5 deployed ML projects → 1 research publication
             </p>
             <p style="color: #94a3b8;">
                 <b>Targeting Roles:</b> 1-3 Years Experience - Data Scientist, ML Engineer, AI Engineer, Data Engineer, and Analytics Engineer
@@ -213,7 +217,8 @@ def show():
     """, unsafe_allow_html=True)
     
     # Resume Download Button
-    with open("ymodepalli-RESUME.pdf", "rb") as pdf_file:
+    resume_path = ROOT_DIR / "ymodepalli-RESUME.pdf"
+    with open(resume_path, "rb") as pdf_file:
         pdf_bytes = pdf_file.read()
         st.download_button(
             label="📥 Download Resume PDF",

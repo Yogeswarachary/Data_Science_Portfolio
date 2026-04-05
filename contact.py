@@ -1,4 +1,7 @@
 import streamlit as st
+from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parent
 
 def show():
     st.markdown("""
@@ -52,7 +55,8 @@ def show():
         </div>
         """, unsafe_allow_html=True)
         
-        with open("ymodepalli-RESUME.pdf", "rb") as pdf_file:
+        resume_path = ROOT_DIR / "ymodepalli-RESUME.pdf"
+        with open(resume_path, "rb") as pdf_file:
             pdf_bytes = pdf_file.read()
             st.download_button(
                 label="📥 Download Full Resume PDF",
@@ -67,20 +71,24 @@ def show():
         st.markdown("""
         <div class="glass-card">
             <h3 style="color: #00d2ff; margin-top: 0;">📬 Direct Contact</h3>
+            <p style="color: #e2e8f0; margin: 0.75rem 0 0; font-size: 0.95rem; line-height: 1.8;">
+                Reach out directly using any of the contact methods below.
+            </p>
         </div>
         """, unsafe_allow_html=True)
 
         st.markdown(
             """
-            **📧 Email**  
-            [myogeswarachary@gmail.com](mailto:myogeswarachary@gmail.com)  
-
-            **📱 WhatsApp / Mobile**  
-            [ +91 9676 106 803 ](https://wa.me/919676106803)  
-
-            **📍 Location**  
-            Hyderabad, India (Open to Remote)
-            """
+            <div style="color: #e2e8f0; line-height: 1.8;">
+                <p style="margin: 0 0 0.75rem 0;"><strong>📧 Email</strong><br>
+                <a href="mailto:myogeswarachary@gmail.com" style="color: #00d2ff; text-decoration: none;">myogeswarachary@gmail.com</a></p>
+                <p style="margin: 0 0 0.75rem 0;"><strong>📱 WhatsApp / Mobile</strong><br>
+                <a href="https://wa.me/919676106803" style="color: #00d2ff; text-decoration: none;">+91 9676 106 803</a></p>
+                <p style="margin: 0;"><strong>📍 Location</strong><br>
+                Hyderabad, India (Open to Remote)</p>
+            </div>
+            """,
+            unsafe_allow_html=True
         )
 
     st.write("##")
@@ -94,7 +102,7 @@ def show():
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
             <div style="background: rgba(0, 210, 255, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid #00d2ff;">
                 <p style="color: #94a3b8; margin: 0; font-weight: bold;">Email</p>
-                <p style="color: #00d2ff; margin: 0.5rem 0; font-size: 0.95rem;">24 hourss</p>
+                <p style="color: #00d2ff; margin: 0.5rem 0; font-size: 0.95rem;">24 hours</p>
             </div>
             <div style="background: rgba(0, 210, 255, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid #00d2ff;">
                 <p style="color: #94a3b8; margin: 0; font-weight: bold;">WhatsApp</p>

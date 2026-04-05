@@ -1,10 +1,13 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
+from pathlib import Path
 import homepage
 import projects
 import about
 import resume
 import contact
+
+ROOT_DIR = Path(__file__).resolve().parent
 
 # Page Config
 st.set_page_config(
@@ -15,7 +18,8 @@ st.set_page_config(
 )
 
 # Load CSS
-with open("assets/style.css") as css_file:
+css_path = ROOT_DIR / "assets" / "style.css"
+with open(css_path, "r", encoding="utf-8") as css_file:
     st.markdown(f"<style>{css_file.read()}</style>", unsafe_allow_html=True)
 
 # Sidebar Navigation
@@ -23,7 +27,7 @@ with st.sidebar:
     st.markdown("""
     <div style="text-align: center; margin-bottom: 2rem;">
         <h2 style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">
-            Yogeswarachary
+            Yogeswarachary Modepalli
         </h2>
         <p style="color: #94a3b8; margin-top: 0.5rem;">Data Scientist & Engineer</p>
         <p style="color: #94a3b8; font-size: 0.9rem;">Career Shift | Fraud Detection | Analytics</p>

@@ -8,13 +8,13 @@ def show():
     """, unsafe_allow_html=True)
     st.markdown("""
     <p style="font-size: 1rem; color: #94a3b8; margin-bottom: 2rem;">
-    5 production-ready projects <b>fraud detection, supply chain analytics, hypothesis testing, ML trading, and AI-powered tools with One Indipendent Reseach Publication</b> in
-    financial research</b>. Each deployed to Streamlit Cloud with live demos.
+    5 production-ready projects featuring fraud detection, supply chain analytics, hypothesis testing, ML trading, and AI automation.
+    Includes an independent research publication in financial fraud. Each project is deployed with live demos.
     </p>
     """, unsafe_allow_html=True)
     st.write("##")
 
-    # Project Data - ALL 6 PROJECTS
+    # Project Data - 5 Live Projects + Research
     projects = [
         {
             "title": "🏦 JPMorgan Fraud Detection",
@@ -113,7 +113,7 @@ def show():
     metrics = [
         ("5", "Live Projects", "All deployed to production"),
         ("98%", "Best Accuracy", "JPMorgan fraud model"),
-        ("1", "Independent Research Publications", "Research papers & case studies")
+        ("1", "Independent Research Publication", "Research papers & case studies")
     ]
     
     for col, (value, label, detail) in zip(metric_cols, metrics):
