@@ -57,10 +57,13 @@ body {
 /* Typography Enhancements */
 h1,
 h2,
+h1,
+h2,
 h3,
 h4 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
     font-weight: 700 !important;
+    color: var(--text-main) !important;
 }
 
 .gradient-text {
@@ -68,6 +71,7 @@ h4 {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: var(--text-main) !important;
     font-size: 3.5rem;
     line-height: 1.2;
     margin-bottom: 1rem;
