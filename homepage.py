@@ -51,7 +51,7 @@ def show():
 
     # Business Impact Highlights - THE RECRUITER HOOK
     st.markdown("""
-    <h2 style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-align: center;">
+    <h2 style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: #f8fafc !important; text-align: center;">
     🎯 Proven Business Impact
     </h2>
     """, unsafe_allow_html=True)
@@ -105,7 +105,7 @@ def show():
 
     # The Transition Narrative - CRITICAL FOR CAREER-SHIFTERS
     st.markdown("""
-    <h2 style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-align: center;">
+    <h2 style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: #f8fafc !important; text-align: center;">
     🚀 Why I'm Ready for Enterprise Roles
     </h2>
     """, unsafe_allow_html=True)

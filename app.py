@@ -44,7 +44,7 @@ with open(css_path, "r", encoding="utf-8") as css_file:
 with st.sidebar:
     st.markdown("""
     <div style="text-align: center; margin-bottom: 2rem;">
-        <h2 style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">
+        <h2 style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: #f8fafc !important; margin: 0;">
             Yogeswarachary Modepalli
         </h2>
         <p style="color: #94a3b8; margin-top: 0.5rem;">Data Scientist & Engineer</p>
@@ -55,7 +55,7 @@ with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
         options=["Home", "Projects", "Experience", "Education & Certs", "About", "Resume", "Contact"],
-        icons=["house", "briefcase", "suitcase-fill", "award", "person", "file-text", "envelope"],
+        icons=["house", "briefcase", "suitcase", "award", "person", "file-text", "envelope"],
         menu_icon="cast",
         default_index=0,
         styles={
@@ -99,7 +99,7 @@ elif selected == "Projects":
     projects.show()
 elif selected == "Experience":
     st.markdown("""
-    <h1 style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-size: 3.5rem; line-height: 1.2; margin-bottom: 1rem;">
+    <h1 style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: #f8fafc !important; font-size: 3.5rem; line-height: 1.2; margin-bottom: 1rem;">
     Professional Experience
     </h1>
     """, unsafe_allow_html=True)
@@ -184,7 +184,7 @@ elif selected == "Experience":
     
 elif selected == "Education & Certs":
     st.markdown("""
-    <h1 style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-size: 3.5rem; line-height: 1.2; margin-bottom: 1rem;">
+    <h1 style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: #f8fafc !important; font-size: 3.5rem; line-height: 1.2; margin-bottom: 1rem;">
     Education & Certifications
     </h1>
     """, unsafe_allow_html=True)
