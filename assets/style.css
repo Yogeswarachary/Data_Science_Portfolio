@@ -179,7 +179,7 @@ a[data-testid="stLinkButton"] {
     border-radius: 8px;
     border: 1px solid #00d2ff;
     background-color: #00d2ff !important;
-    color: #0f172a !important;
+    color: white !important;
     font-weight: 700;
     padding: 0.85rem 1.2rem;
     text-decoration: none !important;
@@ -187,7 +187,7 @@ a[data-testid="stLinkButton"] {
 a[data-testid="stLinkButton"]:hover,
 a[data-testid="stLinkButton"]:focus {
     background-color: #3a7bd5 !important;
-    color: #0f172a !important;
+    color: white !important;
     box-shadow: 0 6px 18px rgba(0, 210, 255, 0.35);
 }
 
