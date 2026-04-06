@@ -190,7 +190,10 @@ a[data-testid="stLinkButton"]:focus {
     color: white !important;
     box-shadow: 0 6px 18px rgba(0, 210, 255, 0.35);
 }
-
+a[data-testid="stLinkButton"] span,
+a[data-testid="stLinkButton"] * {
+    color: white !important;
+}
 /* Form Elements */
 input,
 textarea,
