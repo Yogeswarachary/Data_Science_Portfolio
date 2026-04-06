@@ -22,12 +22,19 @@ body,
 
 #MainMenu,
 .stAppHeader,
+[data-testid="stHeader"],
 footer,
 [data-testid="stToolbar"] {
+    display: none !important;
     visibility: hidden !important;
     height: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
+}
+
+/* Fix for Streamlit default text colors in light mode on our dark background */
+.stMarkdown, .stMarkdown p, .stMarkdown li, .stMarkdown span, .stText, label, .st-emotion-cache-16idsys p {
+    color: var(--text-main) !important;
 }
 
 a,
@@ -80,7 +87,6 @@ h4 {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: var(--text-main) !important;
     font-size: 3.5rem;
     line-height: 1.2;
     margin-bottom: 1rem;
