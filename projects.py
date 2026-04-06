@@ -2,7 +2,7 @@ import streamlit as st
 
 def show():
     st.markdown("""
-    <h1 style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: #f8fafc !important; font-size: 3.5rem; line-height: 1.2; margin-bottom: 1rem;">
+    <h1 class="gradient-text">
     Project Portfolio
     </h1>
     """, unsafe_allow_html=True)

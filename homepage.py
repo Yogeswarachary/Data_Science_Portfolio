@@ -27,7 +27,7 @@ def show():
     with col2:
         st.markdown("""
         <div class="glass-card">
-            <h1 class="gradient-text" style="color: #94a3b8;font-size: 2.5rem; margin: 0;">Yogeswarachary Modepalli</h1>
+            <h1 class="gradient-text" style="font-size: 2.5rem; margin: 0; color: #f8fafc;">Yogeswarachary Modepalli</h1>
             <h2 style="margin-top: 0.5rem; color: #00d2ff; font-weight: 400;">Data Scientist | Analytics Engineer | ML Specialist</h2>
             <p style="font-size: 1rem; color: #94a3b8; line-height: 1.6;">
             📊 <b>Career Pivot Success Story</b><br>
@@ -51,7 +51,7 @@ def show():
 
     # Business Impact Highlights - THE RECRUITER HOOK
     st.markdown("""
-    <h2 style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: #f8fafc !important; text-align: center;">
+    <h2 class="gradient-text" style="text-align: center; font-size: 2.2rem;">
     🎯 Proven Business Impact
     </h2>
     """, unsafe_allow_html=True)
@@ -105,7 +105,7 @@ def show():
 
     # The Transition Narrative - CRITICAL FOR CAREER-SHIFTERS
     st.markdown("""
-    <h2 style="background: linear-gradient(90deg, #00d2ff, #3a7bd5); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: #f8fafc !important; text-align: center;">
+    <h2 class="gradient-text" style="text-align: center; font-size: 2.2rem;">
     🚀 Why I'm Ready for Enterprise Roles
     </h2>
     """, unsafe_allow_html=True)

@@ -86,7 +86,13 @@ h4 {
     background: linear-gradient(90deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent !important;
+    color: #f8fafc !important;
+    display: inline-block;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: opacity, transform;
+    text-rendering: optimizeLegibility;
     font-size: 3.5rem;
     line-height: 1.2;
     margin-bottom: 1rem;
