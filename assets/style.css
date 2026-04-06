@@ -84,9 +84,6 @@ h4 {
 
 .gradient-text {
     background: linear-gradient(90deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent !important;
     color: #f8fafc !important;
     display: inline-block;
     transform: translateZ(0);
