@@ -21,7 +21,7 @@ body,
 }
 
 #MainMenu,
-[data-testid="stHeader"],
+.stAppHeader,
 footer,
 [data-testid="stToolbar"] {
     visibility: hidden !important;
