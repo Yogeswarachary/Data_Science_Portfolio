@@ -25,7 +25,7 @@ def show():
         """, unsafe_allow_html=True)
     
     with col2:
-        st.markdown(f"""
+        st.markdown("""
         <div class="glass-card">
             <h1 class="gradient-text" style="color: #94a3b8;font-size: 2.5rem; margin: 0;">Yogeswarachary Modepalli</h1>
             <h2 style="margin-top: 0.5rem; color: #00d2ff; font-weight: 400;">Data Scientist | Analytics Engineer | ML Specialist</h2>
