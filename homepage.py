@@ -151,15 +151,15 @@ def show():
     }
 
     .carousel-card {
-      position: relative;
-      width: 100%;
-      min-height: 220px;
-      padding: 1.35rem 1.6rem 3.4rem 1.6rem;
-      border-radius: 28px;
-      background: linear-gradient(135deg, rgba(29, 38, 64, 0.98), rgba(38, 49, 78, 0.98));
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
-      overflow: hidden;
+    position: relative;
+    width: 100%;
+    min-height: 220px;
+    padding: 1.35rem 1.6rem 3.4rem 1.6rem;
+    border-radius: 28px;
+    background: #111827; 
+    border: 1px solid #1f2937;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
     }
 
     .carousel-card::before {
