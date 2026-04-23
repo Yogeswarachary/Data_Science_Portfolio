@@ -164,8 +164,8 @@ def show():
         .carousel-card {
           position: relative;
           width: 100%;
-          min-height: 250px;
-          padding: 1.6rem 1.8rem 4.4rem 1.8rem;
+          min-height: 220px;
+          padding: 1.35rem 1.6rem 4.4rem 1.8rem;
           border-radius: 28px;
           background: linear-gradient(135deg, rgba(29, 38, 64, 0.98), rgba(38, 49, 78, 0.98));
           border: 1px solid rgba(255, 255, 255, 0.08);
@@ -380,7 +380,7 @@ def show():
     </html>
     """).replace("{slides_html}", slides_html).replace("{dots_html}", dots_html).replace("{num_projects}", str(len(projects)))
 
-    components.html(carousel_html, height=255, scrolling=False)
+    components.html(carousel_html, height=235, scrolling=False)
 
     st.write("##")
 
