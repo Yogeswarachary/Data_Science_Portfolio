@@ -40,357 +40,348 @@ def show():
         </div>
         """, unsafe_allow_html=True)
         
-        # Skill Badges
         st.write("")
         skills = [
             "Python", "Pandas", "Scikit-Learn", "Machine Learning", "Hypothesis Testing", "Streamlit", "MySQL",
             "Azure", "Databricks", "Ollama", "OpenClaw", "Jan.AI", "GROQ"
         ]
         skills_html = "".join([f'<span class="skill-badge">{s}</span>' for s in skills])
-        st.markdown(f"<p style='color: #94a3b8; font-size: 0.9rem;'><b>Technical Skills:</b></p>{skills_html}", unsafe_allow_html=True)
+        st.markdown(
+            f"<p style='color: #94a3b8; font-size: 0.9rem;'><b>Technical Skills:</b></p>{skills_html}",
+            unsafe_allow_html=True
+        )
 
     st.write("##")
 
-    # Business Impact Highlights - THE RECRUITER HOOK
+    # Business Impact Highlights
     st.markdown("""
     <h2 class="gradient-text" style="text-align: center; font-size: 2.2rem;">
     🎯 Proven Business Impact
     </h2>
     """, unsafe_allow_html=True)
     st.write("")
-    
-    # Define projects
+
     projects = [
         {
             "icon": "📈",
             "title": "Visalens",
-            "desc": "Intelligent visa guidance with compliance-driven extraction from official sources.",
-            "metric": "95%",
-            "label": "Application Accuracy"
+            "desc": "Intelligent visa guidance with compliance-driven extraction from official sources."
         },
         {
             "icon": "🚩",
             "title": "Fraudmap",
-            "desc": "Time-aware fraud scoring and visualization for real-time transaction risk.",
-            "metric": "98%",
-            "label": "Risk Precision"
+            "desc": "Time-aware fraud scoring and visualization for real-time transaction risk."
         },
         {
             "icon": "💳",
             "title": "JPMorgan Fraud Detection",
-            "desc": "Production ML pipeline for transaction fraud classification with imbalanced data handling.",
-            "metric": "97%",
-            "label": "Detection Precision"
+            "desc": "Production ML pipeline for transaction fraud classification with imbalanced data handling."
         },
         {
             "icon": "📚",
             "title": "Financial Fraud Research 2024",
-            "desc": "Published analysis of emerging fraud patterns and risk signals across India FY24.",
-            "metric": "1 Paper",
-            "label": "Published Insight"
+            "desc": "Published analysis of emerging fraud patterns and risk signals across India FY24."
         },
         {
             "icon": "📦",
             "title": "DHL Supply Chain Analytics",
-            "desc": "Inventory and route optimization with KPI monitoring for global logistics.",
-            "metric": "25%",
-            "label": "Efficiency Gain"
+            "desc": "Inventory and route optimization with KPI monitoring for global logistics."
         },
         {
             "icon": "🧪",
             "title": "A/B Testing & Statistics",
-            "desc": "Experiment design and retention analysis to drive measurable product lift.",
-            "metric": "95%",
-            "label": "Confidence Level"
+            "desc": "Experiment design and retention analysis to drive measurable product lift."
         }
     ]
 
     slides_html = ""
-dots_html = ""
-for idx, proj in enumerate(projects):
-    slides_html += f"""
-    <div class="carousel-slide">
-        <div class="carousel-card">
-            <div class="carousel-content">
-                <div class="carousel-eyebrow">{proj['icon']} Business Impact</div>
-                <h3>{proj['title']}</h3>
-                <p>{proj['desc']}</p>
+    dots_html = ""
+
+    for idx, proj in enumerate(projects):
+        slides_html += f"""
+        <div class="carousel-slide">
+            <div class="carousel-card">
+                <div class="carousel-content">
+                    <div class="carousel-eyebrow">{proj['icon']} Business Impact</div>
+                    <h3>{proj['title']}</h3>
+                    <p>{proj['desc']}</p>
+                </div>
             </div>
         </div>
-    </div>
-    """
-    dots_html += f'<div class="carousel-dot{" active" if idx == 0 else ""}" data-index="{idx}"></div>'
-
-    components.html(carousel_html, height=310, scrolling=False)
+        """
+        dots_html += f'<div class="carousel-dot{" active" if idx == 0 else ""}" data-index="{idx}"></div>'
 
     carousel_html = textwrap.dedent("""
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style>
+        * {
+          box-sizing: border-box;
+        }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: transparent !important;
-      overflow: hidden;
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
+        html, body {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          background: transparent !important;
+          overflow: hidden;
+          font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
 
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-    }
+        body {
+          display: block;
+        }
 
-    .carousel-frame {
-      width: min(100%, 1120px);
-      margin: 0 auto;
-      padding: 0;
-      background: transparent;
-    }
+        .carousel-frame {
+          width: 100%;
+          margin: 0 auto;
+          padding: 0;
+          background: transparent;
+        }
 
-    .carousel-viewport {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      border-radius: 32px;
-    }
+        .carousel-viewport {
+          position: relative;
+          width: 100%;
+          overflow: hidden;
+          border-radius: 28px;
+          background: transparent;
+        }
 
-    .carousel-slides {
-      display: flex;
-      width: calc(100% * {num_projects});
-      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-    }
+        .carousel-slides {
+          display: flex;
+          width: calc(100% * {num_projects});
+          transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+        }
 
-    .carousel-slide {
-      min-width: 100%;
-      padding: 0;
-    }
+        .carousel-slide {
+          min-width: 100%;
+          padding: 0;
+        }
 
-    .carousel-card {
-      position: relative;
-      min-height: 300px;
-      width: 100%;
-      padding: 1.8rem 2rem 4.5rem 2rem;
-      border-radius: 32px;
-      background: linear-gradient(135deg, rgba(31, 41, 68, 0.98), rgba(44, 54, 84, 0.98));
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
-      overflow: hidden;
-    }
+        .carousel-card {
+          position: relative;
+          width: 100%;
+          min-height: 250px;
+          padding: 1.6rem 1.8rem 4.4rem 1.8rem;
+          border-radius: 28px;
+          background: linear-gradient(135deg, rgba(29, 38, 64, 0.98), rgba(38, 49, 78, 0.98));
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+          overflow: hidden;
+        }
 
-    .carousel-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top right, rgba(34, 211, 238, 0.08), transparent 35%);
-      pointer-events: none;
-    }
+        .carousel-card::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at top right, rgba(34, 211, 238, 0.08), transparent 35%);
+          pointer-events: none;
+        }
 
-    .carousel-content {
-      position: relative;
-      z-index: 2;
-      max-width: 68%;
-    }
+        .carousel-content {
+          position: relative;
+          z-index: 2;
+          max-width: 78%;
+        }
 
-    .carousel-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.45rem 0.95rem;
-      border-radius: 999px;
-      background: rgba(34, 211, 238, 0.12);
-      border: 1px solid rgba(34, 211, 238, 0.18);
-      color: #b6f4ff;
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      margin-bottom: 1.2rem;
-    }
+        .carousel-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.45rem;
+          padding: 0.45rem 0.95rem;
+          border-radius: 999px;
+          background: rgba(34, 211, 238, 0.12);
+          border: 1px solid rgba(34, 211, 238, 0.18);
+          color: #b6f4ff;
+          font-size: 0.82rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.03em;
+          margin-bottom: 1.1rem;
+        }
 
-    .carousel-card h3 {
-      margin: 0 0 1rem 0;
-      font-size: clamp(1.9rem, 3vw, 2.45rem);
-      line-height: 1.15;
-      color: #f8fafc;
-      font-weight: 700;
-    }
+        .carousel-card h3 {
+          margin: 0 0 0.9rem 0;
+          font-size: clamp(1.8rem, 3vw, 2.35rem);
+          line-height: 1.15;
+          color: #f8fafc;
+          font-weight: 700;
+        }
 
-    .carousel-card p {
-      margin: 0;
-      color: #d1d5db;
-      font-size: 1rem;
-      line-height: 1.75;
-      max-width: 620px;
-    }
+        .carousel-card p {
+          margin: 0;
+          color: #d1d5db;
+          font-size: 1rem;
+          line-height: 1.75;
+          max-width: 680px;
+        }
 
-    .carousel-arrow {
-      position: absolute;
-      bottom: 22px;
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(71, 85, 105, 0.92);
-      border: 1px solid rgba(255, 255, 255, 0.10);
-      color: #4de3ff;
-      font-size: 1.8rem;
-      font-weight: 700;
-      cursor: pointer;
-      z-index: 3;
-      user-select: none;
-      transition: all 0.2s ease;
-    }
+        .carousel-arrow {
+          position: absolute;
+          bottom: 18px;
+          width: 38px;
+          height: 38px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(51, 65, 85, 0.88);
+          border: 1px solid rgba(255, 255, 255, 0.10);
+          color: #4de3ff;
+          font-size: 1.2rem;
+          font-weight: 700;
+          cursor: pointer;
+          z-index: 3;
+          user-select: none;
+          transition: all 0.2s ease;
+        }
 
-    .carousel-arrow:hover {
-      background: rgba(51, 65, 85, 1);
-      transform: scale(1.05);
-    }
+        .carousel-arrow:hover {
+          background: rgba(51, 65, 85, 1);
+          transform: scale(1.05);
+        }
 
-    .carousel-arrow.left {
-      left: 18px;
-    }
+        .carousel-arrow.left {
+          left: 16px;
+        }
 
-    .carousel-arrow.right {
-      right: 18px;
-    }
+        .carousel-arrow.right {
+          right: 16px;
+        }
 
-    .carousel-dots {
-      position: absolute;
-      bottom: 36px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      z-index: 3;
-    }
+        .carousel-dots {
+          position: absolute;
+          bottom: 31px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          z-index: 3;
+        }
 
-    .carousel-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 999px;
-      background: rgba(203, 213, 225, 0.45);
-      transition: all 0.25s ease;
-      cursor: pointer;
-    }
+        .carousel-dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 999px;
+          background: rgba(203, 213, 225, 0.42);
+          transition: all 0.25s ease;
+          cursor: pointer;
+        }
 
-    .carousel-dot.active {
-      width: 38px;
-      background: linear-gradient(90deg, #22d3ee, #06b6d4);
-    }
+        .carousel-dot.active {
+          width: 30px;
+          background: linear-gradient(90deg, #22d3ee, #06b6d4);
+        }
 
-    @media (max-width: 768px) {
-      .carousel-card {
-        min-height: 270px;
-        padding: 1.25rem 1.2rem 4.2rem 1.2rem;
-      }
+        @media (max-width: 768px) {
+          .carousel-card {
+            min-height: 235px;
+            padding: 1.2rem 1.1rem 4rem 1.1rem;
+          }
 
-      .carousel-content {
-        max-width: 100%;
-      }
+          .carousel-content {
+            max-width: 100%;
+          }
 
-      .carousel-card h3 {
-        font-size: 1.6rem;
-      }
+          .carousel-card h3 {
+            font-size: 1.45rem;
+          }
 
-      .carousel-card p {
-        font-size: 0.92rem;
-        line-height: 1.6;
-      }
+          .carousel-card p {
+            font-size: 0.92rem;
+            line-height: 1.6;
+          }
 
-      .carousel-arrow {
-        width: 40px;
-        height: 40px;
-        bottom: 18px;
-        font-size: 1.5rem;
-      }
+          .carousel-arrow {
+            width: 34px;
+            height: 34px;
+            bottom: 16px;
+            font-size: 1rem;
+          }
 
-      .carousel-dots {
-        bottom: 30px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="carousel-frame">
-    <div class="carousel-viewport">
-      <div class="carousel-slides" id="carouselSlides">
-        {slides_html}
+          .carousel-dots {
+            bottom: 28px;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="carousel-frame">
+        <div class="carousel-viewport">
+          <div class="carousel-slides" id="carouselSlides">
+            {slides_html}
+          </div>
+
+          <div class="carousel-arrow left" id="prevBtn">&#10094;</div>
+          <div class="carousel-dots" id="carouselDots">
+            {dots_html}
+          </div>
+          <div class="carousel-arrow right" id="nextBtn">&#10095;</div>
+        </div>
       </div>
 
-      <div class="carousel-arrow left" id="prevBtn">&#10094;</div>
-      <div class="carousel-dots" id="carouselDots">
-        {dots_html}
-      </div>
-      <div class="carousel-arrow right" id="nextBtn">&#10095;</div>
-    </div>
-  </div>
+      <script>
+        const slides = document.querySelectorAll('.carousel-slide');
+        const slideCount = slides.length;
+        const slidesContainer = document.getElementById('carouselSlides');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const intervalTime = 5000;
+        let currentIndex = 0;
+        let timer = null;
 
-  <script>
-    const slides = document.querySelectorAll('.carousel-slide');
-    const slideCount = slides.length;
-    const slidesContainer = document.getElementById('carouselSlides');
-    const dots = document.querySelectorAll('.carousel-dot');
-    const intervalTime = 5000;
-    let currentIndex = 0;
-    let timer = null;
+        function updateCarousel() {
+          slidesContainer.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+          dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+          });
+        }
 
-    function updateCarousel() {
-      slidesContainer.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
-      dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentIndex);
-      });
-    }
+        function nextSlide() {
+          currentIndex = (currentIndex + 1) % slideCount;
+          updateCarousel();
+        }
 
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % slideCount;
-      updateCarousel();
-    }
+        function prevSlide() {
+          currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+          updateCarousel();
+        }
 
-    function prevSlide() {
-      currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-      updateCarousel();
-    }
+        function restartTimer() {
+          if (timer) clearInterval(timer);
+          timer = setInterval(nextSlide, intervalTime);
+        }
 
-    function restartTimer() {
-      if (timer) clearInterval(timer);
-      timer = setInterval(nextSlide, intervalTime);
-    }
+        document.getElementById('nextBtn').addEventListener('click', () => {
+          nextSlide();
+          restartTimer();
+        });
 
-    document.getElementById('nextBtn').addEventListener('click', () => {
-      nextSlide();
-      restartTimer();
-    });
+        document.getElementById('prevBtn').addEventListener('click', () => {
+          prevSlide();
+          restartTimer();
+        });
 
-    document.getElementById('prevBtn').addEventListener('click', () => {
-      prevSlide();
-      restartTimer();
-    });
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            currentIndex = index;
+            updateCarousel();
+            restartTimer();
+          });
+        });
 
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        currentIndex = index;
         updateCarousel();
         restartTimer();
-      });
-    });
+      </script>
+    </body>
+    </html>
+    """).replace("{slides_html}", slides_html).replace("{dots_html}", dots_html).replace("{num_projects}", str(len(projects)))
 
-    updateCarousel();
-    restartTimer();
-  </script>
-</body>
-</html>
-""").replace("{slides_html}", slides_html).replace("{dots_html}", dots_html).replace("{num_projects}", str(len(projects)))
+    components.html(carousel_html, height=255, scrolling=False)
+
     st.write("##")
 
     # The Transition Narrative - CRITICAL FOR CAREER-SHIFTERS
