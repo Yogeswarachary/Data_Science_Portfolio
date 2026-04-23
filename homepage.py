@@ -113,6 +113,7 @@ def show():
 
     carousel_html = textwrap.dedent("""
     <style>
+    html, body { background-color: transparent !important; }
     * { box-sizing: border-box; }
 
     html, body {
