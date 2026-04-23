@@ -125,23 +125,30 @@ def show():
         """
 
     carousel_html = textwrap.dedent("""
-    <style>
-    html, body {
-        margin: 0;
-        padding: 0;
-        background: transparent !important;
-        color: inherit;
-    }
-    body {
-        background: transparent !important;
-    }
-    .carousel-frame {
-        width: 60%;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 0;
-        background: transparent;
-    }
+    <!DOCTYPE html>
+    <html lang=\"en\" style=\"background: transparent !important; margin: 0; padding: 0;\">
+    <head>
+      <meta charset=\"utf-8\">
+      <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+      <style>
+      html, body {
+          margin: 0;
+          padding: 0;
+          min-height: 100%;
+          background: transparent !important;
+          color: inherit;
+      }
+      body {
+          background: transparent !important;
+          overflow: hidden;
+      }
+      .carousel-frame {
+          width: 60%;
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 0;
+          background: transparent;
+      }
     .carousel-inner {
         overflow: hidden;
         border-radius: 20px;
@@ -311,6 +318,8 @@ def show():
 
     restartTimer();
     </script>
+    </body>
+    </html>
     """).replace("{slides_html}", slides_html).replace("{dots_html}", dots_html).replace("{num_projects}", str(len(projects)))
 
     components.html(carousel_html, height=340, scrolling=False)
