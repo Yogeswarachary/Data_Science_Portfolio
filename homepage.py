@@ -111,9 +111,13 @@ def show():
         slides_html += f"""
         <div class="carousel-slide">
             <div class="carousel-card">
-                <h3>{proj['icon']} {proj['title']}</h3>
-                <p>{proj['desc']}</p>
+                <div class="carousel-copy">
+                    <div class="carousel-eyebrow">{proj['icon']} Business Impact</div>
+                    <h3>{proj['title']}</h3>
+                    <p>{proj['desc']}</p>
+                </div>
                 <div class="carousel-metric">
+                    <div class="metric-kicker">Key Outcome</div>
                     <div class="value">{proj['metric']}</div>
                     <div class="label">{proj['label']}</div>
                 </div>
@@ -126,134 +130,221 @@ def show():
 
     carousel_html = textwrap.dedent("""
     <!DOCTYPE html>
-    <html lang=\"en\" style=\"background: transparent !important; margin: 0; padding: 0;\">
+    <html lang="en">
     <head>
-      <meta charset=\"utf-8\">
-      <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <style>
+      :root {
+          --accent: #22d3ee;
+          --accent-strong: #06b6d4;
+          --text-main: #f8fafc;
+          --text-muted: #cbd5e1;
+          --text-soft: #94a3b8;
+          --card-bg: linear-gradient(145deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.78));
+          --card-border: rgba(148, 163, 184, 0.18);
+      }
+
+      * { box-sizing: border-box; }
+
       html, body {
           margin: 0;
           padding: 0;
-          min-height: 100%;
           background: transparent !important;
-          color: inherit;
+          color: var(--text-main);
+          font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       }
+
       body {
-          background: transparent !important;
           overflow: hidden;
       }
-      .carousel-frame {
-          width: 60%;
-          max-width: 800px;
-          margin: 0 auto;
-          padding: 0;
-          background: transparent;
-      }
-    .carousel-inner {
-        overflow: hidden;
-        border-radius: 20px;
-        background: transparent;
-    }
-    .carousel-slides {
-        display: flex;
-        transition: transform 0.6s ease;
-        width: calc(100% * {num_projects});
-    }
-    .carousel-slide {
-        min-width: 100%;
-        box-sizing: border-box;
-        padding: 0;
-    }
-    .carousel-card {
-        width: 100%;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 20px;
-        padding: 1.5rem 2rem;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
-        backdrop-filter: blur(18px);
-        min-height: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
-    .carousel-card h3 {
-        margin: 0 0 0.5rem 0;
-        font-size: 1.6rem;
-        color: #00d2ff;
-        max-width: 70%;
-    }
-    .carousel-card p {
-        margin: 0 0 1rem 0;
-        color: #cbd5e1;
-        font-size: 0.95rem;
-        line-height: 1.5rem;
-        max-width: 70%;
-    }
-    .carousel-metric {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: rgba(0, 210, 255, 0.08);
-        border-radius: 16px;
-        padding: 0.75rem 1rem;
-        max-width: 70%;
-    }
-    .carousel-metric .value {
-        font-size: 1.75rem;
-        font-weight: 700;
-        color: #54e5ff;
-    }
-    .carousel-metric .label {
-        color: #94a3b8;
-        font-size: 0.85rem;
-    }
-    .carousel-controls {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 0.75rem;
-        gap: 0.75rem;
-    }
-    .carousel-arrow {
-        width: 55px;
-        height: 55px;
-        border-radius: 50%;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        background: rgba(255, 255, 255, 0.05);
-        color: #38bdf8;
-        font-size: 1.5rem;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.2s ease, background 0.2s ease;
-        cursor: pointer;
-    }
-    .carousel-arrow:hover {
-        transform: scale(1.05);
-        background: rgba(0, 210, 255, 0.12);
-    }
-    .carousel-dots {
-        display: flex;
-        justify-content: center;
-        gap: 0.4rem;
-        flex-wrap: wrap;
-        margin-top: 0.4rem;
-    }
-    .carousel-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.18);
-        cursor: pointer;
-        transition: background 0.2s ease, transform 0.2s ease;
-    }
-    .carousel-dot.active {
-        background: #38bdf8;
-        transform: scale(1.2);
-    }
-    </style>
 
+      .carousel-frame {
+          width: min(100%, 860px);
+          margin: 0 auto;
+          padding: 0 6px;
+      }
+
+      .carousel-inner {
+          overflow: hidden;
+          border-radius: 24px;
+      }
+
+      .carousel-slides {
+          display: flex;
+          transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+          width: calc(100% * {num_projects});
+      }
+
+      .carousel-slide {
+          min-width: 100%;
+          padding: 0;
+      }
+
+      .carousel-card {
+          display: grid;
+          grid-template-columns: minmax(0, 1.7fr) minmax(210px, 0.9fr);
+          gap: 1.2rem;
+          align-items: stretch;
+          width: 100%;
+          min-height: 220px;
+          padding: 1.4rem;
+          border-radius: 24px;
+          background: var(--card-bg);
+          border: 1px solid var(--card-border);
+          box-shadow: 0 22px 50px rgba(2, 8, 23, 0.32);
+          backdrop-filter: blur(14px);
+      }
+
+      .carousel-copy {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 0.8rem;
+          min-width: 0;
+      }
+
+      .carousel-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.45rem;
+          width: fit-content;
+          padding: 0.4rem 0.75rem;
+          border-radius: 999px;
+          background: rgba(34, 211, 238, 0.1);
+          border: 1px solid rgba(34, 211, 238, 0.18);
+          color: #a5f3fc;
+          font-size: 0.78rem;
+          font-weight: 700;
+          letter-spacing: 0.03em;
+          text-transform: uppercase;
+      }
+
+      .carousel-card h3 {
+          margin: 0;
+          font-size: clamp(1.45rem, 2.5vw, 2rem);
+          line-height: 1.15;
+          color: var(--text-main);
+      }
+
+      .carousel-card p {
+          margin: 0;
+          color: var(--text-muted);
+          font-size: 1rem;
+          line-height: 1.65;
+          max-width: 54ch;
+      }
+
+      .carousel-metric {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          padding: 1.15rem;
+          border-radius: 20px;
+          background: linear-gradient(180deg, rgba(34, 211, 238, 0.16), rgba(15, 23, 42, 0.35));
+          border: 1px solid rgba(34, 211, 238, 0.22);
+          min-height: 100%;
+      }
+
+      .metric-kicker {
+          color: var(--text-soft);
+          font-size: 0.8rem;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+      }
+
+      .carousel-metric .value {
+          margin: 0.35rem 0;
+          font-size: clamp(2.2rem, 5vw, 3rem);
+          line-height: 1;
+          font-weight: 800;
+          color: #67e8f9;
+      }
+
+      .carousel-metric .label {
+          color: #e2e8f0;
+          font-size: 0.98rem;
+          line-height: 1.45;
+          font-weight: 600;
+      }
+
+      .carousel-controls {
+          display: grid;
+          grid-template-columns: auto 1fr auto;
+          align-items: center;
+          gap: 0.9rem;
+          margin-top: 0.95rem;
+      }
+
+      .carousel-arrow {
+          width: 44px;
+          height: 44px;
+          border-radius: 999px;
+          border: 1px solid rgba(148, 163, 184, 0.22);
+          background: rgba(15, 23, 42, 0.72);
+          color: #67e8f9;
+          font-size: 1rem;
+          font-weight: 700;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+          cursor: pointer;
+          user-select: none;
+      }
+
+      .carousel-arrow:hover {
+          transform: translateY(-1px);
+          background: rgba(8, 47, 73, 0.92);
+          border-color: rgba(103, 232, 249, 0.45);
+      }
+
+      .carousel-dots {
+          display: flex;
+          justify-content: center;
+          gap: 0.5rem;
+          flex-wrap: wrap;
+      }
+
+      .carousel-dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 999px;
+          background: rgba(148, 163, 184, 0.35);
+          cursor: pointer;
+          transition: all 0.2s ease;
+      }
+
+      .carousel-dot.active {
+          width: 28px;
+          background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+      }
+
+      @media (max-width: 700px) {
+          .carousel-card {
+              grid-template-columns: 1fr;
+              min-height: auto;
+              padding: 1.1rem;
+              gap: 0.9rem;
+          }
+
+          .carousel-metric {
+              min-height: 132px;
+          }
+
+          .carousel-card p {
+              font-size: 0.94rem;
+              line-height: 1.55;
+          }
+
+          .carousel-controls {
+              gap: 0.6rem;
+          }
+      }
+      </style>
+    </head>
+    <body>
     <div class="carousel-frame">
         <div class="carousel-inner">
             <div class="carousel-slides" id="carouselSlides">
@@ -261,11 +352,11 @@ def show():
             </div>
         </div>
         <div class="carousel-controls">
-            <div class="carousel-arrow" id="prevBtn">◀</div>
+            <div class="carousel-arrow" id="prevBtn" aria-label="Previous slide">&#10094;</div>
             <div class="carousel-dots" id="carouselDots">
                 {dots_html}
             </div>
-            <div class="carousel-arrow" id="nextBtn">▶</div>
+            <div class="carousel-arrow" id="nextBtn" aria-label="Next slide">&#10095;</div>
         </div>
     </div>
 
@@ -304,10 +395,12 @@ def show():
         nextSlide();
         restartTimer();
     });
+
     document.getElementById('prevBtn').addEventListener('click', () => {
         prevSlide();
         restartTimer();
     });
+
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             currentIndex = index;
@@ -316,13 +409,14 @@ def show():
         });
     });
 
+    updateCarousel();
     restartTimer();
     </script>
     </body>
     </html>
     """).replace("{slides_html}", slides_html).replace("{dots_html}", dots_html).replace("{num_projects}", str(len(projects)))
 
-    components.html(carousel_html, height=340, scrolling=False)
+    components.html(carousel_html, height=390, scrolling=False)
 
     st.write("##")
 
