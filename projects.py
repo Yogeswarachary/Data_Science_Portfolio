@@ -17,6 +17,22 @@ def show():
     # Project Data - 5 Live Projects + Research
     projects = [
         {
+            "title": "📈 VisaLens - AI Powered smart visa assistant",
+            "desc": "AI-Powered Visa Application Assistant which can provide accurate information from the offical government sources for the different kinds of visa types.",
+            "tech": ["TypeScript", "Next.js", "Groq-Compound"],
+            "github": "https://github.com/Yogeswarachary/visalens",
+            "app": "https://visalens-dq5bjy4sw-yogeswaracharys-projects.vercel.app/",
+            "highlight": "90% Accurate Information about visa types and document requirements"
+        },
+        {
+            "title": "🚩 FraudMap - Real-Time Fraud Risk Mapping",
+            "desc": "Based on the time of transaction, this project provides a real-time fraud risk score mapping to identify high-risk areas and time periods for financial transactions.",
+            "tech": ["TypeScript", "Next.js"],
+            "github": "https://github.com/Yogeswarachary/fraudmap",
+            "app": "https://fraudmap-jrks-g5gfe95qp-yogeswaracharys-projects.vercel.app/",
+            "highlight": "Real-Time Fraud Risk Score Mapping"
+        },
+        {
             "title": "🏦 JPMorgan Fraud Detection",
             "desc": "End-to-end ML pipeline for financial fraud detection with imbalanced dataset handling. Capstone project with high accuracy and production deployment.",
             "tech": ["Python", "Scikit-Learn", "XGBoost", "Imbalanced Learning", "SQL"],

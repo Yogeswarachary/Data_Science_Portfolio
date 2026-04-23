@@ -1,4 +1,6 @@
 import streamlit as st
+import streamlit.components.v1 as components
+import textwrap
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parent
@@ -57,49 +59,250 @@ def show():
     """, unsafe_allow_html=True)
     st.write("")
     
-    cols = st.columns(3)
-    
-    with cols[0]:
-        st.markdown("""
-        <div class="glass-card" style="height: 280px; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <h3 style="color: #00d2ff; margin-top: 0;">💳 JPMorgan Fraud Detection</h3>
-                <p style="color: #94a3b8; margin: 1rem 0;">End-to-end ML pipeline for financial risk detection with imbalanced dataset handling.</p>
-            </div>
-            <div style="background: rgba(0, 210, 255, 0.1); padding: 1rem; border-radius: 10px; text-align: center;">
-                <div style="color: #00d2ff; font-size: 1.5rem; font-weight: bold;">98%</div>
-                <div style="color: #94a3b8; font-size: 0.9rem;">Accuracy</div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
+    # Define projects
+    projects = [
+        {
+            "icon": "📈",
+            "title": "Visalens",
+            "desc": "Intelligent visa guidance with compliance-driven extraction from official sources.",
+            "metric": "95%",
+            "label": "Application Accuracy"
+        },
+        {
+            "icon": "🚩",
+            "title": "Fraudmap",
+            "desc": "Time-aware fraud scoring and visualization for real-time transaction risk.",
+            "metric": "98%",
+            "label": "Risk Precision"
+        },
+        {
+            "icon": "💳",
+            "title": "JPMorgan Fraud Detection",
+            "desc": "Production ML pipeline for transaction fraud classification with imbalanced data handling.",
+            "metric": "97%",
+            "label": "Detection Precision"
+        },
+        {
+            "icon": "📚",
+            "title": "Financial Fraud Research 2024",
+            "desc": "Published analysis of emerging fraud patterns and risk signals across India FY24.",
+            "metric": "1 Paper",
+            "label": "Published Insight"
+        },
+        {
+            "icon": "📦",
+            "title": "DHL Supply Chain Analytics",
+            "desc": "Inventory and route optimization with KPI monitoring for global logistics.",
+            "metric": "25%",
+            "label": "Efficiency Gain"
+        },
+        {
+            "icon": "🧪",
+            "title": "A/B Testing & Statistics",
+            "desc": "Experiment design and retention analysis to drive measurable product lift.",
+            "metric": "95%",
+            "label": "Confidence Level"
+        }
+    ]
 
-    with cols[1]:
-        st.markdown("""
-        <div class="glass-card" style="height: 280px; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <h3 style="color: #00d2ff; margin-top: 0;">📦 DHL Supply Chain Analytics</h3>
-                <p style="color: #94a3b8; margin: 1rem 0;">Real-time KPI dashboards & inventory optimization for global logistics operations.</p>
-            </div>
-            <div style="background: rgba(0, 210, 255, 0.1); padding: 1rem; border-radius: 10px; text-align: center;">
-                <div style="color: #00d2ff; font-size: 1.5rem; font-weight: bold;">25%</div>
-                <div style="color: #94a3b8; font-size: 0.9rem;">Efficiency Gain</div>
+    slides_html = ""
+    dots_html = ""
+    for idx, proj in enumerate(projects):
+        slides_html += f"""
+        <div class="carousel-slide">
+            <div class="carousel-card">
+                <h3>{proj['icon']} {proj['title']}</h3>
+                <p>{proj['desc']}</p>
+                <div class="carousel-metric">
+                    <div class="value">{proj['metric']}</div>
+                    <div class="label">{proj['label']}</div>
+                </div>
             </div>
         </div>
-        """, unsafe_allow_html=True)
+        """
+        dots_html += f"""
+        <div class=\"carousel-dot{' active' if idx == 0 else ''}\" data-index=\"{idx}\"></div>
+        """
 
-    with cols[2]:
-        st.markdown("""
-        <div class="glass-card" style="height: 280px; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <h3 style="color: #00d2ff; margin-top: 0;">🧪 A/B Testing & Statistics</h3>
-                <p style="color: #94a3b8; margin: 1rem 0;">Rigorous hypothesis testing for Cookie Cats game user retention optimization.</p>
-            </div>
-            <div style="background: rgba(0, 210, 255, 0.1); padding: 1rem; border-radius: 10px; text-align: center;">
-                <div style="color: #00d2ff; font-size: 1.5rem; font-weight: bold;">95%</div>
-                <div style="color: #94a3b8; font-size: 0.9rem;">Confidence</div>
+    carousel_html = textwrap.dedent("""
+    <style>
+    .carousel-frame {
+        width: 60%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0;
+    }
+    .carousel-inner {
+        overflow: hidden;
+        border-radius: 20px;
+    }
+    .carousel-slides {
+        display: flex;
+        transition: transform 0.6s ease;
+        width: calc(100% * {num_projects});
+    }
+    .carousel-slide {
+        min-width: 100%;
+        box-sizing: border-box;
+        padding: 0;
+    }
+    .carousel-card {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 20px;
+        padding: 1.5rem 2rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+        backdrop-filter: blur(18px);
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .carousel-card h3 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.6rem;
+        color: #00d2ff;
+        max-width: 70%;
+    }
+    .carousel-card p {
+        margin: 0 0 1rem 0;
+        color: #cbd5e1;
+        font-size: 0.95rem;
+        line-height: 1.5rem;
+        max-width: 70%;
+    }
+    .carousel-metric {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(0, 210, 255, 0.08);
+        border-radius: 16px;
+        padding: 0.75rem 1rem;
+        max-width: 70%;
+    }
+    .carousel-metric .value {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #54e5ff;
+    }
+    .carousel-metric .label {
+        color: #94a3b8;
+        font-size: 0.85rem;
+    }
+    .carousel-controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 0.75rem;
+        gap: 0.75rem;
+    }
+    .carousel-arrow {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.05);
+        color: #38bdf8;
+        font-size: 1.5rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s ease, background 0.2s ease;
+        cursor: pointer;
+    }
+    .carousel-arrow:hover {
+        transform: scale(1.05);
+        background: rgba(0, 210, 255, 0.12);
+    }
+    .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+        margin-top: 0.4rem;
+    }
+    .carousel-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.18);
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .carousel-dot.active {
+        background: #38bdf8;
+        transform: scale(1.2);
+    }
+    </style>
+
+    <div class="carousel-frame">
+        <div class="carousel-inner">
+            <div class="carousel-slides" id="carouselSlides">
+                {slides_html}
             </div>
         </div>
-        """, unsafe_allow_html=True)
+        <div class="carousel-controls">
+            <div class="carousel-arrow" id="prevBtn">◀</div>
+            <div class="carousel-dots" id="carouselDots">
+                {dots_html}
+            </div>
+            <div class="carousel-arrow" id="nextBtn">▶</div>
+        </div>
+    </div>
+
+    <script>
+    const slides = document.querySelectorAll('.carousel-slide');
+    const slideCount = slides.length;
+    const slidesContainer = document.getElementById('carouselSlides');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const intervalTime = 5000;
+    let currentIndex = 0;
+    let timer = null;
+
+    function updateCarousel() {
+        slidesContainer.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slideCount;
+        updateCarousel();
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+        updateCarousel();
+    }
+
+    function restartTimer() {
+        if (timer) clearInterval(timer);
+        timer = setInterval(nextSlide, intervalTime);
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        nextSlide();
+        restartTimer();
+    });
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        prevSlide();
+        restartTimer();
+    });
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentIndex = index;
+            updateCarousel();
+            restartTimer();
+        });
+    });
+
+    restartTimer();
+    </script>
+    """).replace("{slides_html}", slides_html).replace("{dots_html}", dots_html).replace("{num_projects}", str(len(projects)))
+
+    components.html(carousel_html, height=340)
 
     st.write("##")
 
@@ -147,7 +350,7 @@ def show():
     
     stat_cols = st.columns(5)
     stats = [
-        ("5", "Live Projects"),
+        ("7", "Live Projects"),
         ("3", "Years Experience"),
         ("98%", "Avg Accuracy"),
         ("3", "Certifications"),
