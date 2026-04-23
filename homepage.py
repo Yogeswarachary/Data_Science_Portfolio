@@ -126,15 +126,26 @@ def show():
 
     carousel_html = textwrap.dedent("""
     <style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        background: transparent !important;
+        color: inherit;
+    }
+    body {
+        background: transparent !important;
+    }
     .carousel-frame {
         width: 60%;
         max-width: 800px;
         margin: 0 auto;
         padding: 0;
+        background: transparent;
     }
     .carousel-inner {
         overflow: hidden;
         border-radius: 20px;
+        background: transparent;
     }
     .carousel-slides {
         display: flex;
@@ -302,7 +313,7 @@ def show():
     </script>
     """).replace("{slides_html}", slides_html).replace("{dots_html}", dots_html).replace("{num_projects}", str(len(projects)))
 
-    components.html(carousel_html, height=340)
+    components.html(carousel_html, height=340, scrolling=False)
 
     st.write("##")
 
