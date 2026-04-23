@@ -99,288 +99,271 @@ def show():
 
     for idx, proj in enumerate(projects):
         slides_html += f"""
-        <div class="carousel-slide">
-            <div class="carousel-card">
-                <div class="carousel-content">
-                    <div class="carousel-eyebrow">{proj['icon']} Business Impact</div>
-                    <h3>{proj['title']}</h3>
-                    <p>{proj['desc']}</p>
-                </div>
+    <div class="carousel-slide">
+        <div class="carousel-card">
+            <div class="carousel-content">
+                <div class="carousel-eyebrow">{proj['icon']} Business Impact</div>
+                <h3>{proj['title']}</h3>
+                <p>{proj['desc']}</p>
             </div>
         </div>
-        """
-        dots_html += f'<div class="carousel-dot{" active" if idx == 0 else ""}" data-index="{idx}"></div>'
+    </div>
+    """
+        dots_html += f"<div class='carousel-dot{' active' if idx == 0 else ''}' data-index='{idx}'></div>"
 
     carousel_html = textwrap.dedent("""
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <style>
-        * {
-          box-sizing: border-box;
-        }
+    <style>
+    * { box-sizing: border-box; }
 
-        html, body {
-          margin: 0;
-          padding: 0;
-          width: 100%;
-          background: transparent !important;
-          overflow: hidden;
-          font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      background: transparent !important;
+      overflow: hidden;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
 
-        body {
-          display: block;
-        }
+    .carousel-frame {
+      width: 100%;
+      margin: 0 auto;
+      padding: 0;
+      background: transparent;
+    }
 
-        .carousel-frame {
-          width: 100%;
-          margin: 0 auto;
-          padding: 0;
-          background: transparent;
-        }
+    .carousel-viewport {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 28px;
+      background: transparent;
+    }
 
-        .carousel-viewport {
-          position: relative;
-          width: 100%;
-          overflow: hidden;
-          border-radius: 28px;
-          background: transparent;
-        }
+    .carousel-slides {
+      display: flex;
+      width: calc(100% * {num_projects});
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+    }
 
-        .carousel-slides {
-          display: flex;
-          width: calc(100% * {num_projects});
-          transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-        }
+    .carousel-slide {
+      min-width: 100%;
+      padding: 0;
+    }
 
-        .carousel-slide {
-          min-width: 100%;
-          padding: 0;
-        }
+    .carousel-card {
+      position: relative;
+      width: 100%;
+      min-height: 220px;
+      padding: 1.35rem 1.6rem 3.4rem 1.6rem;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(29, 38, 64, 0.98), rgba(38, 49, 78, 0.98));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+      overflow: hidden;
+    }
 
-        .carousel-card {
-          position: relative;
-          width: 100%;
-          min-height: 220px;
-          padding: 1.35rem 1.6rem 4.4rem 1.8rem;
-          border-radius: 28px;
-          background: linear-gradient(135deg, rgba(29, 38, 64, 0.98), rgba(38, 49, 78, 0.98));
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
-          overflow: hidden;
-        }
+    .carousel-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(34, 211, 238, 0.08), transparent 35%);
+      pointer-events: none;
+    }
 
-        .carousel-card::before {
-          content: "";
-          position: absolute;
-          inset: 0;
-          background: radial-gradient(circle at top right, rgba(34, 211, 238, 0.08), transparent 35%);
-          pointer-events: none;
-        }
+    .carousel-content {
+      position: relative;
+      z-index: 2;
+      max-width: 78%;
+    }
 
-        .carousel-content {
-          position: relative;
-          z-index: 2;
-          max-width: 78%;
-        }
+    .carousel-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.95rem;
+      border-radius: 999px;
+      background: rgba(34, 211, 238, 0.12);
+      border: 1px solid rgba(34, 211, 238, 0.18);
+      color: #b6f4ff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.1rem;
+    }
 
-        .carousel-eyebrow {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.45rem;
-          padding: 0.45rem 0.95rem;
-          border-radius: 999px;
-          background: rgba(34, 211, 238, 0.12);
-          border: 1px solid rgba(34, 211, 238, 0.18);
-          color: #b6f4ff;
-          font-size: 0.82rem;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 0.03em;
-          margin-bottom: 1.1rem;
-        }
+    .carousel-card h3 {
+      margin: 0 0 0.9rem 0;
+      font-size: clamp(1.8rem, 3vw, 2.35rem);
+      line-height: 1.15;
+      color: #f8fafc;
+      font-weight: 700;
+    }
 
-        .carousel-card h3 {
-          margin: 0 0 0.9rem 0;
-          font-size: clamp(1.8rem, 3vw, 2.35rem);
-          line-height: 1.15;
-          color: #f8fafc;
-          font-weight: 700;
-        }
+    .carousel-card p {
+      margin: 0;
+      color: #d1d5db;
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 680px;
+    }
 
-        .carousel-card p {
-          margin: 0;
-          color: #d1d5db;
-          font-size: 1rem;
-          line-height: 1.75;
-          max-width: 680px;
-        }
+    .carousel-arrow {
+      position: absolute;
+      bottom: 14px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(51, 65, 85, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      color: #4de3ff;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      z-index: 3;
+      user-select: none;
+      transition: all 0.2s ease;
+    }
 
-        .carousel-arrow {
-          position: absolute;
-          bottom: 18px;
-          width: 38px;
-          height: 38px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: rgba(51, 65, 85, 0.88);
-          border: 1px solid rgba(255, 255, 255, 0.10);
-          color: #4de3ff;
-          font-size: 1.2rem;
-          font-weight: 700;
-          cursor: pointer;
-          z-index: 3;
-          user-select: none;
-          transition: all 0.2s ease;
-        }
+    .carousel-arrow.left {
+      left: 16px;
+    }
 
-        .carousel-arrow:hover {
-          background: rgba(51, 65, 85, 1);
-          transform: scale(1.05);
-        }
+    .carousel-arrow.right {
+      right: 16px;
+    }
 
-        .carousel-arrow.left {
-          left: 16px;
-        }
+    .carousel-dots {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 3;
+    }
 
-        .carousel-arrow.right {
-          right: 16px;
-        }
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(203, 213, 225, 0.42);
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
 
-        .carousel-dots {
-          position: absolute;
-          bottom: 31px;
-          left: 50%;
-          transform: translateX(-50%);
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          z-index: 3;
-        }
+    .carousel-dot.active {
+      width: 30px;
+      background: linear-gradient(90deg, #22d3ee, #06b6d4);
+    }
 
-        .carousel-dot {
-          width: 10px;
-          height: 10px;
-          border-radius: 999px;
-          background: rgba(203, 213, 225, 0.42);
-          transition: all 0.25s ease;
-          cursor: pointer;
-        }
+    @media (max-width: 768px) {
+      .carousel-card {
+        min-height: 205px;
+        padding: 1rem 1rem 3.2rem 1rem;
+      }
 
-        .carousel-dot.active {
-          width: 30px;
-          background: linear-gradient(90deg, #22d3ee, #06b6d4);
-        }
+      .carousel-content {
+        max-width: 100%;
+      }
 
-        @media (max-width: 768px) {
-          .carousel-card {
-            min-height: 235px;
-            padding: 1.2rem 1.1rem 4rem 1.1rem;
-          }
+      .carousel-card h3 {
+        font-size: 1.45rem;
+      }
 
-          .carousel-content {
-            max-width: 100%;
-          }
+      .carousel-card p {
+        font-size: 0.92rem;
+        line-height: 1.6;
+      }
 
-          .carousel-card h3 {
-            font-size: 1.45rem;
-          }
+      .carousel-arrow {
+        width: 34px;
+        height: 34px;
+        bottom: 12px;
+        font-size: 1rem;
+      }
 
-          .carousel-card p {
-            font-size: 0.92rem;
-            line-height: 1.6;
-          }
-
-          .carousel-arrow {
-            width: 34px;
-            height: 34px;
-            bottom: 16px;
-            font-size: 1rem;
-          }
-
-          .carousel-dots {
-            bottom: 28px;
-          }
-        }
-      </style>
-    </head>
-    <body>
-      <div class="carousel-frame">
-        <div class="carousel-viewport">
-          <div class="carousel-slides" id="carouselSlides">
-            {slides_html}
-          </div>
-
-          <div class="carousel-arrow left" id="prevBtn">&#10094;</div>
-          <div class="carousel-dots" id="carouselDots">
-            {dots_html}
-          </div>
-          <div class="carousel-arrow right" id="nextBtn">&#10095;</div>
-        </div>
+      .carousel-dots {
+        bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="carousel-frame">
+    <div class="carousel-viewport">
+      <div class="carousel-slides" id="carouselSlides">
+        {slides_html}
       </div>
 
-      <script>
-        const slides = document.querySelectorAll('.carousel-slide');
-        const slideCount = slides.length;
-        const slidesContainer = document.getElementById('carouselSlides');
-        const dots = document.querySelectorAll('.carousel-dot');
-        const intervalTime = 5000;
-        let currentIndex = 0;
-        let timer = null;
+      <div class="carousel-arrow left" id="prevBtn">&#10094;</div>
+      <div class="carousel-dots" id="carouselDots">
+        {dots_html}
+      </div>
+      <div class="carousel-arrow right" id="nextBtn">&#10095;</div>
+    </div>
+  </div>
 
-        function updateCarousel() {
-          slidesContainer.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
-          dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
-          });
-        }
+  <script>
+    const slides = document.querySelectorAll('.carousel-slide');
+    const slideCount = slides.length;
+    const slidesContainer = document.getElementById('carouselSlides');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const intervalTime = 5000;
+    let currentIndex = 0;
+    let timer = null;
 
-        function nextSlide() {
-          currentIndex = (currentIndex + 1) % slideCount;
-          updateCarousel();
-        }
+    function updateCarousel() {
+      slidesContainer.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+      });
+    }
 
-        function prevSlide() {
-          currentIndex = (currentIndex - 1 + slideCount) % slideCount;
-          updateCarousel();
-        }
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slideCount;
+      updateCarousel();
+    }
 
-        function restartTimer() {
-          if (timer) clearInterval(timer);
-          timer = setInterval(nextSlide, intervalTime);
-        }
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+      updateCarousel();
+    }
 
-        document.getElementById('nextBtn').addEventListener('click', () => {
-          nextSlide();
-          restartTimer();
-        });
+    function restartTimer() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(nextSlide, intervalTime);
+    }
 
-        document.getElementById('prevBtn').addEventListener('click', () => {
-          prevSlide();
-          restartTimer();
-        });
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      nextSlide();
+      restartTimer();
+    });
 
-        dots.forEach((dot, index) => {
-          dot.addEventListener('click', () => {
-            currentIndex = index;
-            updateCarousel();
-            restartTimer();
-          });
-        });
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      prevSlide();
+      restartTimer();
+    });
 
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentIndex = index;
         updateCarousel();
         restartTimer();
-      </script>
-    </body>
-    </html>
-    """).replace("{slides_html}", slides_html).replace("{dots_html}", dots_html).replace("{num_projects}", str(len(projects)))
+      });
+    });
 
-    components.html(carousel_html, height=235, scrolling=False)
+    updateCarousel();
+    restartTimer();
+  </script>
+    """)
+
+    carousel_html = carousel_html.replace("{slides_html}", slides_html).replace("{dots_html}", dots_html).replace("{num_projects}", str(len(projects)))
+    components.html(carousel_html, height=255, scrolling=False)
 
     st.write("##")
 
