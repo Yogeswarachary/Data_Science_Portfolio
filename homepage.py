@@ -416,7 +416,7 @@ def show():
     </html>
     """).replace("{slides_html}", slides_html).replace("{dots_html}", dots_html).replace("{num_projects}", str(len(projects)))
 
-    components.html(carousel_html, height=390, scrolling=False)
+    components.html(carousel_html, height=255, scrolling=False)
 
     st.write("##")
 
